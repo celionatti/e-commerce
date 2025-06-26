@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UrbanTrend - Modern E-Commerce</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="./assets/css/urban.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">UrbanTrend</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Shop</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Categories</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+                <div class="ms-3 d-flex">
+                    <button class="btn btn-outline-secondary me-2">
+                        <i class="fas fa-search"></i>
+                    </button>
+                    <a href="#" class="btn btn-primary">
+                        <i class="fas fa-shopping-cart"></i> Cart <span class="badge bg-white text-primary ms-1">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="hero-title slide-up">New Collection 2025</h1>
+                    <p class="hero-subtitle slide-up delay-1">Discover the latest trends in fashion and technology with our exclusive new arrivals.</p>
+                    <div class="slide-up delay-2">
+                        <a href="#" class="btn btn-primary me-2">Shop Now</a>
+                        <a href="#" class="btn btn-outline-secondary">Explore</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block">
+                    <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Fashion Model" class="img-fluid rounded-3 shadow">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="featured-products">
+        <div class="container">
+            <h2 class="section-title fade-in">Featured Products</h2>
+            <div class="row">
+                <!-- Product 1 -->
+                <div class="col-md-4 fade-in">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="product-img" alt="Wireless Headphones">
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h3 class="product-title">Wireless Headphones</h3>
+                                <span class="badge bg-light text-dark">New</span>
+                            </div>
+                            <p class="product-description">Premium sound quality with noise cancellation technology.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">$129.99 <span class="badge-discount">20% OFF</span></span>
+                                <button class="btn btn-sm btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-md-4 fade-in delay-1">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="product-img" alt="Smart Watch">
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h3 class="product-title">Smart Watch</h3>
+                                <span class="badge bg-light text-dark">Bestseller</span>
+                            </div>
+                            <p class="product-description">Track your fitness and stay connected with this smart watch.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">$199.99</span>
+                                <button class="btn btn-sm btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-md-4 fade-in delay-2">
+                    <div class="product-card">
+                        <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" class="product-img" alt="Bluetooth Speaker">
+                        <div class="product-body">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <h3 class="product-title">Bluetooth Speaker</h3>
+                                <span class="badge bg-light text-dark">Popular</span>
+                            </div>
+                            <p class="product-description">Portable with 20 hours battery life and rich sound quality.</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="product-price">$89.99 <span class="badge-discount">15% OFF</span></span>
+                                <button class="btn btn-sm btn-primary">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5 fade-in delay-3">
+                <a href="#" class="btn btn-outline-primary">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Shop by Category</h2>
+            <div class="row">
+                <div class="col-md-3 col-6 fade-in">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h5>Electronics</h5>
+                        <p class="text-muted">50+ Products</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Shop Now</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 fade-in delay-1">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-tshirt"></i>
+                        </div>
+                        <h5>Fashion</h5>
+                        <p class="text-muted">120+ Products</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Shop Now</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 fade-in delay-2">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-home"></i>
+                        </div>
+                        <h5>Home & Garden</h5>
+                        <p class="text-muted">75+ Products</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Shop Now</a>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 fade-in delay-3">
+                    <div class="category-card">
+                        <div class="category-icon">
+                            <i class="fas fa-gamepad"></i>
+                        </div>
+                        <h5>Gaming</h5>
+                        <p class="text-muted">40+ Products</p>
+                        <a href="#" class="btn btn-sm btn-outline-primary">Shop Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h2 class="newsletter-title slide-up">Subscribe to Our Newsletter</h2>
+                    <p class="mb-4 slide-up delay-1">Get exclusive offers, new product announcements, and style inspiration delivered to your inbox.</p>
+                    <div class="row justify-content-center slide-up delay-2">
+                        <div class="col-md-8">
+                            <div class="input-group mb-3">
+                                <input type="email" class="form-control newsletter-input" placeholder="Your email address">
+                                <button class="btn newsletter-btn ms-2">Subscribe</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5 class="mb-3">UrbanTrend</h5>
+                    <p>Your one-stop destination for all the latest products and trends. We offer quality products with fast delivery.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Shop</h5>
+                        <ul>
+                            <li><a href="#">All Products</a></li>
+                            <li><a href="#">Featured</a></li>
+                            <li><a href="#">New Arrivals</a></li>
+                            <li><a href="#">Sale Items</a></li>
+                            <li><a href="#">Gift Cards</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>About</h5>
+                        <ul>
+                            <li><a href="#">Our Story</a></li>
+                            <li><a href="#">Careers</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">Blog</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact Us</h5>
+                        <ul>
+                            <li><i class="fas fa-map-marker-alt me-2"></i> 123 Trend Street, New York, USA</li>
+                            <li><i class="fas fa-phone me-2"></i> +1 234 567 890</li>
+                            <li><i class="fas fa-envelope me-2"></i> info@urbantrend.com</li>
+                            <li><i class="fas fa-clock me-2"></i> Mon-Fri: 9AM - 6PM</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12 text-center copyright">
+                    <p class="mb-0">&copy; 2025 UrbanTrend. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="./assets/js/urban.js"></script>
+</body>
+</html>
