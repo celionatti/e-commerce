@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus | Futuristic E-Commerce</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Glide.js for carousels -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/css/glide.core.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/css/glide.theme.min.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/final.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="#"><span>NAT</span>TI</a>
+
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Desktop Menu -->
+            <div class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Shop</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="categoriesDropdown" role="button" data-bs-toggle="dropdown">
+                            Categories
+                        </a>
+                        <ul class="dropdown-menu bg-dark">
+                            <li><a class="dropdown-item text-light" href="#">Smartphones</a></li>
+                            <li><a class="dropdown-item text-light" href="#">Laptops</a></li>
+                            <li><a class="dropdown-item text-light" href="#">Audio</a></li>
+                            <li><a class="dropdown-item text-light" href="#">Wearables</a></li>
+                            <li><hr class="dropdown-divider bg-secondary"></li>
+                            <li><a class="dropdown-item text-light" href="#">All Categories</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contact</a>
+                    </li>
+                </ul>
+
+                <!-- Utility Icons -->
+                <div class="d-flex align-items-center">
+                    <div class="input-group search-box me-3" style="max-width: 250px;">
+                        <input type="text" class="form-control bg-dark text-light border-dark" placeholder="Search..." aria-label="Search">
+                        <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                    <i class="fas fa-heart utility-icon"></i>
+                    <div class="position-relative">
+                        <i class="fas fa-shopping-cart utility-icon"></i>
+                        <span class="cart-count">3</span>
+                    </div>
+                    <i class="fas fa-user utility-icon"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Offcanvas Menu -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="mobileMenu">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title"><span>NAT</span>TI</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <ul class="navbar-nav mobile-menu-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Home <i class="fas fa-chevron-right"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Shop <i class="fas fa-chevron-right"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Categories <i class="fas fa-chevron-right"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About <i class="fas fa-chevron-right"></i></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact <i class="fas fa-chevron-right"></i></a>
+                </li>
+            </ul>
+
+            <hr class="my-4 bg-secondary">
+
+            <div class="input-group mb-4">
+                <input type="text" class="form-control bg-dark text-light border-dark" placeholder="Search...">
+                <button class="btn btn-outline-secondary" type="button"><i class="fas fa-search"></i></button>
+            </div>
+
+            <div class="d-flex justify-content-around">
+                <i class="fas fa-heart utility-icon"></i>
+                <div class="position-relative">
+                    <i class="fas fa-shopping-cart utility-icon"></i>
+                    <span class="cart-count">3</span>
+                </div>
+                <i class="fas fa-user utility-icon"></i>
+                <i class="fas fa-moon utility-icon"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="floating-element floating-1"></div>
+        <div class="floating-element floating-2"></div>
+        <div class="container">
+            <div class="hero-content">
+                <h1 data-aos="fade-up">Next Generation Tech Awaits</h1>
+                <p data-aos="fade-up" data-aos-delay="100">Experience the future today with our curated collection of cutting-edge technology designed to elevate every aspect of your digital life.</p>
+                <div class="d-flex gap-3" data-aos="fade-up" data-aos-delay="200">
+                    <button class="btn btn-primary btn-lg">Shop Now</button>
+                    <button class="btn btn-outline-light btn-lg">Explore</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Featured Products</h2>
+            </div>
+
+            <div class="row">
+                <!-- Product 1 -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Wireless Headphones">
+                            <span class="product-badge new">New</span>
+                        </div>
+                        <div class="product-body">
+                            <h5 class="product-title">Quantum Wireless Headphones</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-muted ms-2">(42)</span>
+                            </div>
+                            <div>
+                                <span class="product-price">$199.99</span>
+                                <span class="product-old-price">$249.99</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-sm btn-primary flex-grow-1">Add to Cart</button>
+                                <button class="wishlist-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Smartphone">
+                            <span class="product-badge sale">-20%</span>
+                        </div>
+                        <div class="product-body">
+                            <h5 class="product-title">Nexus Pro Smartphone</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-2">(128)</span>
+                            </div>
+                            <div>
+                                <span class="product-price">$899.99</span>
+                                <span class="product-old-price">$1,099.99</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-sm btn-primary flex-grow-1">Add to Cart</button>
+                                <button class="wishlist-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Laptop">
+                            <span class="product-badge hot">Bestseller</span>
+                        </div>
+                        <div class="product-body">
+                            <h5 class="product-title">Ultra Slim Laptop</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span class="text-muted ms-2">(256)</span>
+                            </div>
+                            <div>
+                                <span class="product-price">$1,299.99</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-sm btn-primary flex-grow-1">Add to Cart</button>
+                                <button class="wishlist-btn">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="product-card">
+                        <div class="product-img">
+                            <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Smart Watch">
+                            <span class="product-badge">Limited</span>
+                        </div>
+                        <div class="product-body">
+                            <h5 class="product-title">Fitness Pro Smartwatch</h5>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span class="text-muted ms-2">(87)</span>
+                            </div>
+                            <div>
+                                <span class="product-price">$249.99</span>
+                                <span class="product-old-price">$299.99</span>
+                            </div>
+                            <div class="product-actions">
+                                <button class="btn btn-sm btn-primary flex-grow-1">Add to Cart</button>
+                                <button class="wishlist-btn active">
+                                    <i class="fas fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-5" data-aos="fade-up">
+                <button class="btn btn-outline-light px-5">View All Products</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Why Choose Us</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h4>Premium Quality</h4>
+                        <p>All our products undergo rigorous quality checks to ensure you receive only the best.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <h4>Fast Delivery</h4>
+                        <p>Get your orders delivered at lightning speed with our premium shipping partners.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <h4>24/7 Support</h4>
+                        <p>Our dedicated support team is available round the clock to assist you.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fas fa-undo"></i>
+                        </div>
+                        <h4>Easy Returns</h4>
+                        <p>Not satisfied? Return within 30 days for a full refund, no questions asked.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- New Arrivals Section -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>New Arrivals</h2>
+            </div>
+
+            <div class="glide new-arrivals">
+                <div class="glide__track" data-glide-el="track">
+                    <ul class="glide__slides">
+                        <!-- Product 5 -->
+                        <li class="glide__slide">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Camera">
+                                    <span class="product-badge new">New</span>
+                                </div>
+                                <div class="product-body">
+                                    <h5 class="product-title">4K Action Camera</h5>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <span class="text-muted ms-2">(36)</span>
+                                    </div>
+                                    <div>
+                                        <span class="product-price">$349.99</span>
+                                    </div>
+                                    <div class="product-actions">
+                                        <button class="btn btn-sm btn-primary flex-grow-1">Add to Cart</button>
+                                        <button class="wishlist-btn">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Product 6 -->
+                        <li class="glide__slide">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1592155931584-901ac15763e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Gaming Console">
+                                    <span class="product-badge hot">Hot</span>
+                                </div>
+                                <div class="product-body">
+                                    <h5 class="product-title">Next-Gen Gaming Console</h5>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <span class="text-muted ms-2">(214)</span>
+                                    </div>
+                                    <div>
+                                        <span class="product-price">$499.99</span>
+                                    </div>
+                                    <div class="product-actions">
+                                        <button class="btn btn-sm btn-primary flex-grow-1">Add to Cart</button>
+                                        <button class="wishlist-btn">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Product 7 -->
+                        <li class="glide__slide">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1603302576837-37561b2e2302?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Wireless Earbuds">
+                                    <span class="product-badge new">New</span>
+                                </div>
+                                <div class="product-body">
+                                    <h5 class="product-title">True Wireless Earbuds</h5>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <i class="far fa-star"></i>
+                                        <span class="text-muted ms-2">(53)</span>
+                                    </div>
+                                    <div>
+                                        <span class="product-price">$129.99</span>
+                                        <span class="product-old-price">$159.99</span>
+                                    </div>
+                                    <div class="product-actions">
+                                        <button class="btn btn-sm btn-primary flex-grow-1">Add to Cart</button>
+                                        <button class="wishlist-btn">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Product 8 -->
+                        <li class="glide__slide">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="VR Headset">
+                                    <span class="product-badge">Limited</span>
+                                </div>
+                                <div class="product-body">
+                                    <h5 class="product-title">Immersive VR Headset</h5>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="far fa-star"></i>
+                                        <span class="text-muted ms-2">(78)</span>
+                                    </div>
+                                    <div>
+                                        <span class="product-price">$399.99</span>
+                                        <span class="product-old-price">$499.99</span>
+                                    </div>
+                                    <div class="product-actions">
+                                        <button class="btn btn-sm btn-primary flex-grow-1">Add to Cart</button>
+                                        <button class="wishlist-btn">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+
+                        <!-- Product 9 -->
+                        <li class="glide__slide">
+                            <div class="product-card">
+                                <div class="product-img">
+                                    <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Tablet">
+                                    <span class="product-badge new">New</span>
+                                </div>
+                                <div class="product-body">
+                                    <h5 class="product-title">Pro Drawing Tablet</h5>
+                                    <div class="product-rating">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                        <span class="text-muted ms-2">(41)</span>
+                                    </div>
+                                    <div>
+                                        <span class="product-price">$599.99</span>
+                                    </div>
+                                    <div class="product-actions">
+                                        <button class="btn btn-sm btn-primary flex-grow-1">Add to Cart</button>
+                                        <button class="wishlist-btn">
+                                            <i class="far fa-heart"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="glide__arrows" data-glide-el="controls">
+                    <button class="glide__arrow glide__arrow--left" data-glide-dir="<"><i class="fas fa-chevron-left"></i></button>
+                    <button class="glide__arrow glide__arrow--right" data-glide-dir=">"><i class="fas fa-chevron-right"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>What Our Customers Say</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Sarah Johnson" class="testimonial-avatar">
+                            <div>
+                                <h5 class="testimonial-author">Sarah Johnson</h5>
+                                <p class="testimonial-role">Tech Enthusiast</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">The Nexus Pro smartphone exceeded all my expectations. The camera quality is phenomenal and the battery life lasts me through two full days of heavy use.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Michael Chen" class="testimonial-avatar">
+                            <div>
+                                <h5 class="testimonial-author">Michael Chen</h5>
+                                <p class="testimonial-role">Professional Photographer</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                        <p class="testimonial-text">I've purchased several products from Nexus and each one has been top-notch. Their customer service is exceptional and the delivery is always prompt.</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="testimonial-card">
+                        <div class="testimonial-header">
+                            <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Emma Rodriguez" class="testimonial-avatar">
+                            <div>
+                                <h5 class="testimonial-author">Emma Rodriguez</h5>
+                                <p class="testimonial-role">Graphic Designer</p>
+                            </div>
+                        </div>
+                        <div class="testimonial-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <p class="testimonial-text">The Ultra Slim Laptop is a game-changer for my design work. The color accuracy is perfect and it handles all my design software without any lag.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content" data-aos="fade-up">
+                <h2>Join Our Tech Community</h2>
+                <p>Subscribe to our newsletter for exclusive deals, tech tips, and early access to new products.</p>
+                <div class="newsletter-form">
+                    <input type="email" class="form-control" placeholder="Your email address">
+                    <button class="btn btn-primary">Subscribe</button>
+                </div>
+                <small class="text-muted">We respect your privacy. Unsubscribe at any time.</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4" data-aos="fade-up">
+                    <div class="footer-about">
+                        <span class="footer-logo"><span>NAT</span>TI</span>
+                        <p>Pushing the boundaries of technology to bring you innovative products that enhance your digital lifestyle.</p>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="footer-links">
+                        <h5>Shop</h5>
+                        <ul>
+                            <li><a href="#">All Products</a></li>
+                            <li><a href="#">Featured</a></li>
+                            <li><a href="#">New Arrivals</a></li>
+                            <li><a href="#">Deals</a></li>
+                            <li><a href="#">Bundles</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="footer-links">
+                        <h5>Support</h5>
+                        <ul>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">FAQs</a></li>
+                            <li><a href="#">Shipping</a></li>
+                            <li><a href="#">Returns</a></li>
+                            <li><a href="#">Warranty</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-12 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="footer-contact">
+                        <h5>Contact Us</h5>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Tech Street, Silicon Valley, CA 94025</p>
+                        <p><i class="fas fa-phone"></i> +1 (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> info@nexus.com</p>
+                        <p><i class="fas fa-clock"></i> Mon-Fri: 9AM - 6PM PST</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="copyright" data-aos="fade-up">
+                <p>&copy; 2023 <a href="#">Nexus</a>. All Rights Reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Cart Button -->
+    <button class="floating-cart-btn" data-bs-toggle="offcanvas" data-bs-target="#cartOffcanvas">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="floating-cart-count">3</span>
+    </button>
+
+    <!-- Cart Offcanvas -->
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="cartOffcanvas">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title">Your Cart (3)</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="cart-items">
+                <!-- Cart Item 1 -->
+                <div class="d-flex mb-4 pb-4 border-bottom border-secondary">
+                    <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Product" class="rounded-3" width="80" height="80">
+                    <div class="ps-3 flex-grow-1">
+                        <h6 class="mb-1">Quantum Wireless Headphones</h6>
+                        <p class="text-muted mb-2">$199.99 x 1</p>
+                        <div class="d-flex align-items-center">
+                            <div class="input-group input-group-sm me-3" style="width: 100px;">
+                                <button class="btn btn-outline-secondary" type="button">-</button>
+                                <input type="text" class="form-control text-center" value="1">
+                                <button class="btn btn-outline-secondary" type="button">+</button>
+                            </div>
+                            <button class="btn btn-link text-danger p-0"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Item 2 -->
+                <div class="d-flex mb-4 pb-4 border-bottom border-secondary">
+                    <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Product" class="rounded-3" width="80" height="80">
+                    <div class="ps-3 flex-grow-1">
+                        <h6 class="mb-1">Fitness Pro Smartwatch</h6>
+                        <p class="text-muted mb-2">$249.99 x 1</p>
+                        <div class="d-flex align-items-center">
+                            <div class="input-group input-group-sm me-3" style="width: 100px;">
+                                <button class="btn btn-outline-secondary" type="button">-</button>
+                                <input type="text" class="form-control text-center" value="1">
+                                <button class="btn btn-outline-secondary" type="button">+</button>
+                            </div>
+                            <button class="btn btn-link text-danger p-0"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cart Item 3 -->
+                <div class="d-flex mb-4 pb-4 border-bottom border-secondary">
+                    <img src="https://images.unsplash.com/photo-1593640408182-31c70c8268f5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Product" class="rounded-3" width="80" height="80">
+                    <div class="ps-3 flex-grow-1">
+                        <h6 class="mb-1">Pro Drawing Tablet</h6>
+                        <p class="text-muted mb-2">$599.99 x 1</p>
+                        <div class="d-flex align-items-center">
+                            <div class="input-group input-group-sm me-3" style="width: 100px;">
+                                <button class="btn btn-outline-secondary" type="button">-</button>
+                                <input type="text" class="form-control text-center" value="1">
+                                <button class="btn btn-outline-secondary" type="button">+</button>
+                            </div>
+                            <button class="btn btn-link text-danger p-0"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="cart-summary mt-auto">
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Subtotal</span>
+                    <span>$1,049.97</span>
+                </div>
+                <div class="d-flex justify-content-between mb-3">
+                    <span>Shipping</span>
+                    <span>Free</span>
+                </div>
+                <div class="d-flex justify-content-between mb-4">
+                    <span>Tax</span>
+                    <span>$84.00</span>
+                </div>
+                <div class="d-flex justify-content-between fw-bold fs-5">
+                    <span>Total</span>
+                    <span>$1,133.97</span>
+                </div>
+                <button class="btn btn-primary w-100 mt-4">Proceed to Checkout</button>
+                <button class="btn btn-outline-light w-100 mt-2">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Quick View Modal -->
+    <div class="modal fade quick-view-modal" id="quickViewModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Product Quick View</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <!-- Image column - will appear first on mobile -->
+                        <div class="col-md-6 order-md-1 order-2">
+                            <div class="quick-view-img">
+                                <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" alt="Product" class="img-fluid">
+                            </div>
+                        </div>
+                        <!-- Content column - will appear second on mobile -->
+                        <div class="col-md-6 order-md-2 order-1">
+                            <h2 class="quick-view-title">Nexus Pro Smartphone</h2>
+                            <div class="product-rating mb-3">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span class="text-muted ms-2">(128 reviews)</span>
+                            </div>
+                            <div class="quick-view-price mb-4">
+                                <span class="text-primary fw-bold fs-3">$899.99</span>
+                                <span class="text-decoration-line-through text-muted ms-2">$1,099.99</span>
+                                <span class="badge bg-danger ms-2">Save $200</span>
+                            </div>
+                            <p class="quick-view-description">
+                                The Nexus Pro Smartphone features a stunning 6.7" AMOLED display, 108MP triple camera system, and all-day battery life. Powered by the latest processor, it delivers desktop-level performance in your pocket.
+                            </p>
+                            <ul class="quick-view-features list-unstyled">
+                                <li><i class="fas fa-check"></i> 6.7" 120Hz AMOLED Display</li>
+                                <li><i class="fas fa-check"></i> 108MP Triple Camera System</li>
+                                <li><i class="fas fa-check"></i> 5000mAh All-Day Battery</li>
+                                <li><i class="fas fa-check"></i> 256GB Storage + 12GB RAM</li>
+                                <li><i class="fas fa-check"></i> 5G Connectivity</li>
+                            </ul>
+                            <div class="quick-view-actions">
+                                <div class="input-group me-3" style="width: 120px;">
+                                    <button class="btn btn-outline-secondary" type="button">-</button>
+                                    <input type="text" class="form-control text-center" value="1">
+                                    <button class="btn btn-outline-secondary" type="button">+</button>
+                                </div>
+                                <button class="btn btn-primary flex-grow-1 my-2">Add to Cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- Glide.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.5.0/glide.min.js"></script>
+    <!-- Custom JS -->
+    <script src="./assets/js/final.js"></script>
+</body>
+</html>
