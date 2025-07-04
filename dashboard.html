@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NATTI Admin Dashboard</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Orbitron:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --dark-color: #2d3436;
+            --light-color: #f5f6fa;
+            --success-color: #00b894;
+            --danger-color: #d63031;
+            --warning-color: #fdcb6e;
+            --info-color: #0984e3;
+            --sidebar-width: 250px;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #f8f9fa;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            background: linear-gradient(135deg, var(--dark-color), #1e272e);
+            color: white;
+            padding: 20px 0;
+            z-index: 1000;
+            box-shadow: 5px 0 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s;
+            overflow-y: auto;
+        }
+
+        .sidebar-brand {
+            padding: 0 20px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .sidebar-brand span {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .sidebar-brand span:first-child {
+            color: var(--primary-color);
+        }
+
+        .sidebar-menu {
+            padding: 0 15px;
+        }
+
+        .sidebar-menu h5 {
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 20px 0 10px;
+            padding-left: 10px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 5px;
+            transition: all 0.3s;
+        }
+
+        .sidebar-menu a:hover, .sidebar-menu a.active {
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+        }
+
+        .sidebar-menu a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+
+        .sidebar-menu .badge {
+            margin-left: auto;
+        }
+
+        .main-content {
+            margin-left: var(--sidebar-width);
+            padding: 20px;
+            transition: all 0.3s;
+            min-height: 100vh;
+        }
+
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 999;
+        }
+
+        .search-box {
+            max-width: 300px;
+        }
+
+        .search-box input {
+            border-radius: 20px;
+            padding: 10px 15px;
+        }
+
+        .search-box button {
+            border-radius: 0 20px 20px 0;
+            padding: 10px 15px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+        }
+
+        .user-profile img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .user-profile .user-info {
+            line-height: 1.2;
+        }
+
+        .user-profile .user-info small {
+            color: #6c757d;
+            font-size: 0.8rem;
+        }
+
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 20px;
+            transition: all 0.3s;
+            height: 100%;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 15px 20px;
+            border-radius: 10px 10px 0 0 !important;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .stat-card i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            line-height: 60px;
+            text-align: center;
+        }
+
+        .stat-card .count {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .stat-card .label {
+            color: #6c757d;
+            font-size: 0.9rem;
+        }
+
+        .bg-primary-light {
+            background-color: rgba(108, 92, 231, 0.1);
+            color: var(--primary-color);
+        }
+
+        .bg-success-light {
+            background-color: rgba(0, 184, 148, 0.1);
+            color: var(--success-color);
+        }
+
+        .bg-danger-light {
+            background-color: rgba(214, 48, 49, 0.1);
+            color: var(--danger-color);
+        }
+
+        .bg-warning-light {
+            background-color: rgba(253, 203, 110, 0.1);
+            color: #e17055;
+        }
+
+        .table-responsive {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .table thead th {
+            background-color: #f8f9fa;
+            border-bottom: none;
+            padding: 15px;
+            font-weight: 600;
+        }
+
+        .table tbody td {
+            padding: 15px;
+            vertical-align: middle;
+        }
+
+        .table tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            padding: 5px 10px;
+            font-weight: 500;
+            border-radius: 5px;
+        }
+
+        .badge-primary {
+            background-color: var(--primary-color);
+        }
+
+        .badge-success {
+            background-color: var(--success-color);
+        }
+
+        .badge-warning {
+            background-color: var(--warning-color);
+            color: var(--dark-color);
+        }
+
+        .badge-danger {
+            background-color: var(--danger-color);
+        }
+
+        .product-img-sm {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            object-fit: cover;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-primary:hover {
+            background-color: #5a4bd1;
+            border-color: #5a4bd1;
+        }
+
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .page-title {
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--dark-color);
+        }
+
+        .breadcrumb {
+            background-color: transparent;
+            padding: 0;
+            margin-bottom: 20px;
+        }
+
+        .breadcrumb-item a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+
+        .notification-dropdown {
+            width: 350px;
+            padding: 0;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .notification-header {
+            padding: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            font-weight: 600;
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 1;
+        }
+
+        .notification-item {
+            padding: 15px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+
+        .notification-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-footer {
+            padding: 10px;
+            text-align: center;
+            background-color: #f8f9fa;
+            position: sticky;
+            bottom: 0;
+        }
+
+        .notification-footer a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .notification-time {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary-color);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #5a4bd1;
+        }
+
+        /* Mobile sidebar toggle */
+        .sidebar-toggle {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 1.25rem;
+            color: var(--dark-color);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .sidebar {
+                transform: translateX(-100%);
+            }
+
+            .sidebar.active {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
+            .sidebar-toggle {
+                display: block;
+            }
+
+            .search-box {
+                max-width: 100%;
+                margin: 10px 0;
+            }
+
+            .navbar .d-flex {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .notification-dropdown {
+                width: 300px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .stat-card .count {
+                font-size: 1.5rem;
+            }
+
+            .stat-card i {
+                width: 50px;
+                height: 50px;
+                line-height: 50px;
+                font-size: 1.5rem;
+            }
+
+            .table thead th, .table tbody td {
+                padding: 10px;
+                font-size: 0.9rem;
+            }
+
+            .notification-dropdown {
+                width: 280px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .sidebar {
+                width: 220px;
+            }
+
+            .main-content {
+                padding: 15px;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .stat-card .count {
+                font-size: 1.3rem;
+            }
+
+            .product-img-sm {
+                width: 50px;
+                height: 50px;
+            }
+
+            .notification-dropdown {
+                width: 260px;
+                right: -80px !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <span>NAT</span><span>TI</span> <small class="ms-2">Admin</small>
+        </div>
+
+        <div class="sidebar-menu">
+            <h5>Main</h5>
+            <a href="#" class="active">
+                <i class="fas fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+
+            <h5>Management</h5>
+            <a href="#">
+                <i class="fas fa-shopping-bag"></i>
+                <span>Products</span>
+                <span class="badge bg-danger rounded-pill">15</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-list"></i>
+                <span>Categories</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-tags"></i>
+                <span>Discounts</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-users"></i>
+                <span>Customers</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-truck"></i>
+                <span>Orders</span>
+                <span class="badge bg-primary rounded-pill">24</span>
+            </a>
+
+            <h5>Content</h5>
+            <a href="#">
+                <i class="fas fa-newspaper"></i>
+                <span>Blog</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-comments"></i>
+                <span>Reviews</span>
+                <span class="badge bg-warning rounded-pill">8</span>
+            </a>
+
+            <h5>System</h5>
+            <a href="#">
+                <i class="fas fa-cog"></i>
+                <span>Settings</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-user-shield"></i>
+                <span>Administrators</span>
+            </a>
+            <a href="#">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics</span>
+            </a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Top Navbar -->
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <button class="btn sidebar-toggle d-lg-none me-3">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="search-box me-auto">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search...">
+                        <button class="btn btn-outline-secondary" type="button">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="d-flex align-items-center">
+                    <!-- Notifications Dropdown -->
+                    <div class="dropdown me-3">
+                        <button class="btn position-relative" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-bell"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                5
+                            </span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                            <div class="notification-header">
+                                Notifications (5)
+                            </div>
+                            <div class="notification-item">
+                                <div class="d-flex justify-content-between">
+                                    <strong>New Order</strong>
+                                    <small class="notification-time">2 min ago</small>
+                                </div>
+                                <p>Order #1234 has been placed</p>
+                            </div>
+                            <div class="notification-item">
+                                <div class="d-flex justify-content-between">
+                                    <strong>Payment Received</strong>
+                                    <small class="notification-time">1 hour ago</small>
+                                </div>
+                                <p>$249.99 payment for Order #1233</p>
+                            </div>
+                            <div class="notification-item">
+                                <div class="d-flex justify-content-between">
+                                    <strong>New Review</strong>
+                                    <small class="notification-time">3 hours ago</small>
+                                </div>
+                                <p>Customer left a 5-star review</p>
+                            </div>
+                            <div class="notification-item">
+                                <div class="d-flex justify-content-between">
+                                    <strong>Low Stock</strong>
+                                    <small class="notification-time">5 hours ago</small>
+                                </div>
+                                <p>Quantum Headphones stock is low</p>
+                            </div>
+                            <div class="notification-item">
+                                <div class="d-flex justify-content-between">
+                                    <strong>System Update</strong>
+                                    <small class="notification-time">1 day ago</small>
+                                </div>
+                                <p>New admin panel features available</p>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">View All Notifications</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages Dropdown -->
+                    <div class="dropdown me-3">
+                        <button class="btn position-relative" type="button" data-bs-toggle="dropdown">
+                            <i class="fas fa-envelope"></i>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning">
+                                3
+                            </span>
+                        </button>
+                        <div class="dropdown-menu dropdown-menu-end notification-dropdown">
+                            <div class="notification-header">
+                                Messages (3)
+                            </div>
+                            <div class="notification-item">
+                                <div class="d-flex">
+                                    <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="User" class="rounded-circle me-3" width="40" height="40">
+                                    <div>
+                                        <div class="d-flex justify-content-between">
+                                            <strong>Sarah Johnson</strong>
+                                            <small class="notification-time">10 min ago</small>
+                                        </div>
+                                        <p>When will my order be shipped?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="d-flex">
+                                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="rounded-circle me-3" width="40" height="40">
+                                    <div>
+                                        <div class="d-flex justify-content-between">
+                                            <strong>Michael Chen</strong>
+                                            <small class="notification-time">2 hours ago</small>
+                                        </div>
+                                        <p>I have a question about my return</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-item">
+                                <div class="d-flex">
+                                    <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="rounded-circle me-3" width="40" height="40">
+                                    <div>
+                                        <div class="d-flex justify-content-between">
+                                            <strong>Emma Rodriguez</strong>
+                                            <small class="notification-time">1 day ago</small>
+                                        </div>
+                                        <p>Thanks for the great service!</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="notification-footer">
+                                <a href="#">View All Messages</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- User Profile -->
+                    <div class="dropdown">
+                        <button class="btn p-0" type="button" data-bs-toggle="dropdown">
+                            <div class="user-profile">
+                                <img src="https://randomuser.me/api/portraits/men/1.jpg" alt="Admin">
+                                <div class="user-info d-none d-md-block">
+                                    <div>Admin User</div>
+                                    <small>Super Admin</small>
+                                </div>
+                            </div>
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-question-circle me-2"></i> Help</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container-fluid">
+            <!-- Breadcrumb -->
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                </ol>
+            </nav>
+
+            <h1 class="page-title">Dashboard Overview</h1>
+
+            <!-- Stats Cards -->
+            <div class="row">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card stat-card">
+                        <div class="card-body">
+                            <i class="fas fa-shopping-cart bg-primary-light"></i>
+                            <div class="count">1,248</div>
+                            <div class="label">Total Orders</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card stat-card">
+                        <div class="card-body">
+                            <i class="fas fa-dollar-sign bg-success-light"></i>
+                            <div class="count">$48,752</div>
+                            <div class="label">Total Revenue</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card stat-card">
+                        <div class="card-body">
+                            <i class="fas fa-users bg-danger-light"></i>
+                            <div class="count">3,895</div>
+                            <div class="label">Customers</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="card stat-card">
+                        <div class="card-body">
+                            <i class="fas fa-chart-line bg-warning-light"></i>
+                            <div class="count">+12.5%</div>
+                            <div class="label">Growth</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Charts Row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Revenue Overview</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="revenueChart" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="card-title">Sales by Category</h5>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="categoryChart" height="300"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recent Orders & Top Products -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">Recent Orders</h5>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table table-hover mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>Order ID</th>
+                                            <th>Customer</th>
+                                            <th>Date</th>
+                                            <th>Amount</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>#12345</td>
+                                            <td>John Smith</td>
+                                            <td>Today, 10:45 AM</td>
+                                            <td>$249.99</td>
+                                            <td><span class="badge bg-success">Completed</span></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#12344</td>
+                                            <td>Sarah Johnson</td>
+                                            <td>Today, 9:30 AM</td>
+                                            <td>$599.99</td>
+                                            <td><span class="badge bg-primary">Processing</span></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#12343</td>
+                                            <td>Michael Chen</td>
+                                            <td>Yesterday, 4:15 PM</td>
+                                            <td>$1,299.99</td>
+                                            <td><span class="badge bg-primary">Processing</span></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#12342</td>
+                                            <td>Emma Rodriguez</td>
+                                            <td>Yesterday, 2:00 PM</td>
+                                            <td>$349.99</td>
+                                            <td><span class="badge bg-warning">Pending</span></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>#12341</td>
+                                            <td>David Wilson</td>
+                                            <td>Yesterday, 11:30 AM</td>
+                                            <td>$199.99</td>
+                                            <td><span class="badge bg-danger">Cancelled</span></td>
+                                            <td><a href="#" class="btn btn-sm btn-outline-primary">View</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="card-title mb-0">Top Selling Products</h5>
+                            <a href="#" class="btn btn-sm btn-outline-primary">View All</a>
+                        </div>
+                        <div class="card-body p-0">
+                            <div class="list-group list-group-flush">
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Product" class="product-img-sm me-3">
+                                        <div>
+                                            <h6 class="mb-1">Nexus Pro Smartphone</h6>
+                                            <small class="text-muted">24 sold this week</small>
+                                        </div>
+                                        <span class="ms-auto text-primary">$899.99</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://images.unsplash.com/photo-1593642632823-8f785ba67e45?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Product" class="product-img-sm me-3">
+                                        <div>
+                                            <h6 class="mb-1">Ultra Slim Laptop</h6>
+                                            <small class="text-muted">18 sold this week</small>
+                                        </div>
+                                        <span class="ms-auto text-primary">$1,299.99</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Product" class="product-img-sm me-3">
+                                        <div>
+                                            <h6 class="mb-1">Quantum Wireless Headphones</h6>
+                                            <small class="text-muted">15 sold this week</small>
+                                        </div>
+                                        <span class="ms-auto text-primary">$199.99</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://images.unsplash.com/photo-1546868871-7041f2a55e12?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Product" class="product-img-sm me-3">
+                                        <div>
+                                            <h6 class="mb-1">Fitness Pro Smartwatch</h6>
+                                            <small class="text-muted">12 sold this week</small>
+                                        </div>
+                                        <span class="ms-auto text-primary">$249.99</span>
+                                    </div>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action">
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://images.unsplash.com/photo-1601784551446-20c9e07cdbdb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Product" class="product-img-sm me-3">
+                                        <div>
+                                            <h6 class="mb-1">4K Action Camera</h6>
+                                            <small class="text-muted">10 sold this week</small>
+                                        </div>
+                                        <span class="ms-auto text-primary">$349.99</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Toggle sidebar on mobile
+        document.querySelector('.sidebar-toggle').addEventListener('click', function() {
+            document.querySelector('.sidebar').classList.toggle('active');
+        });
+
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', function(event) {
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarToggle = document.querySelector('.sidebar-toggle');
+
+            if (window.innerWidth < 992 &&
+                !sidebar.contains(event.target) &&
+                event.target !== sidebarToggle &&
+                !sidebarToggle.contains(event.target)) {
+                sidebar.classList.remove('active');
+            }
+        });
+
+        // Initialize charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Revenue Chart
+            const revenueCtx = document.getElementById('revenueChart').getContext('2d');
+            const revenueChart = new Chart(revenueCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Revenue',
+                        data: [8500, 12500, 9800, 15000, 12000, 18000, 14500, 21000, 17500, 23000, 19500, 25000],
+                        borderColor: '#6c5ce7',
+                        backgroundColor: 'rgba(108, 92, 231, 0.1)',
+                        borderWidth: 2,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                drawBorder: false
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Category Chart
+            const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+            const categoryChart = new Chart(categoryCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Smartphones', 'Laptops', 'Audio', 'Wearables', 'Accessories'],
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: [
+                            '#6c5ce7',
+                            '#00b894',
+                            '#fd79a8',
+                            '#fdcb6e',
+                            '#0984e3'
+                        ],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
